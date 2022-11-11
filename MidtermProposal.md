@@ -20,9 +20,14 @@ Our project aims to potentially identify regional, morphological abnormalities i
 
 ![Alt text](https://github.com/bishopm53/ML-4641-Alzheimer-project/tree/master/assets/img/test-image.jpg?raw=true)
 
+
+
 ### Methods
 
 In order to analyze the signs and progression of Alzheimer’s disease, we will use convolutional neural networks (CNNS). In general, deep learning models outperform statistical machine learning methods in image processing tasks, and CNNs are particularly distinguished among other types of neural networks. Moreover, image processing with CNNs has already proven an effective and efficient tool in disease detection, so there is an abundance of literature to draw upon (Khagi et al., 2019). 
+
+
+<img src="assets/img/test-image.jpg" alt = "Alt text" title = "optional">
 
 ### Potential Results and Discussion
 
