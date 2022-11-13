@@ -31,7 +31,6 @@ In order to analyze the signs and progression of Alzheimer’s disease, we will 
 We discovered that it is easy to create a model that is too complex or takes too large of an input and, therefore, is extremely expensive in computation. With only eight layers in our simple CNN, we still had over 121,000 trainable parameters. To mitigate this issue, we implemented principal component analysis (PCA) on our input data.
 
 
-<img src="assets/img/test-image.jpg" alt = "Alt text" title = "optional">
 
 ### Potential Results and Discussion
 
