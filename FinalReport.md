@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Alzheimer's MRI Scans Classification
-subtitle: Team 23 Project Proposal
+subtitle: Team 23 Final Report
 ---
 
 ### Introduction
