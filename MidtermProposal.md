@@ -63,7 +63,7 @@ The model with the highest training and validation accuracy was the M3SC_2 64x64
 
 Overall, we were satisfied with the results of our model, as it accurately categorized the images into the four classes about 80% of the time. This model distinguishes the images between the classes more accurately than humans. With more data, this model could be helpful in diagnosing patients with earlier stages of Alzheimer’s Disease in the process to help them to start treatment earlier.
 
-![table](assets/img/table.png)
+![table](assets/img/table.PNG)
 
 ### Gantt Chart and Contribution Table
 
