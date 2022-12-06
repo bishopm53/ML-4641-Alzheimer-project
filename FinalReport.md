@@ -19,6 +19,8 @@ Here is a link to our [data set](https://www.kaggle.com/datasets/uraninjo/augmen
 Our project aims to potentially identify regional, morphological abnormalities in individuals with Alzheimer's Disease. These abnormalities display themselves as atrophy in various brain regions, including the hippocampus and entorhinal cortex (Chandra et al., 2018). We also intend to increase diagnostic accuracy, which can either be integrated with patient history or serve as a proactive measure for individuals not yet showing symptoms of the disease. In turn, patient support can increase, and measures to improve patient prognosis may be implemented. Future clinical trials may also be supported to administer potential treatments, mitigate Alzheimer's Disease progression, and enhance patient quality of life.
 
 ![Brain_image](assets/img/Brain_image.png)
+<p align = "center">*(Chandra et al., 2018)* ,<p>
+
 
 ### Data Collection/Preprocessing
 
