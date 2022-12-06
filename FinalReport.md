@@ -20,6 +20,8 @@ Our project aims to potentially identify regional, morphological abnormalities i
 
 ![Brain_image](assets/img/Brain_image.png)
 
+*(Chandra et al., 2018)*
+
 ### Data Collection/Preprocessing
 
 The categorized dataset of over 40,000 augmented MRIs consists of equally sized, 3-channel image files that are generally uniform. The first modification we made was the conversion of the images from color to grayscale. We noticed different MRI images had varying hues appearing as slightly blue, green, or pink. However, these colors introduced randomness that was not indicative of the image classifications. Turning all of our images into grayscale created more consistency among them, and it allowed us to only work with a 1-channel 256 x 256 matrix for each image, as opposed to a 256 x 256 x 3 input. Due to this general uniformity, we believe the versatility of a model trained on this dataset would contribute to the usability of our project in a real-world situation. 
