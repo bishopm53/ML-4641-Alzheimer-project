@@ -32,9 +32,9 @@ Another way we attempted to preprocess the data was by resizing the images. We w
 
 ### Methods
 
-In order to analyze the signs and progression of Alzheimer’s disease, we will use a convolutional neural network (CNN). In general, deep learning models outperform statistical machine learning methods in image processing tasks, and CNNs are particularly distinguished among other types of neural networks. Moreover, image processing with CNNs has already proven an effective and efficient tool in disease detection, so there is an abundance of literature to draw upon (Khagi et al., 2019).
+In order to analyze the signs and progression of Alzheimer’s disease, we used a series of convolutional neural networks (CNNs). In general, deep learning models outperform statistical machine learning methods in image processing, and CNNs are particularly distinguished among other types of neural networks for these tasks. Moreover, image processing with CNNs has already proven an effective and efficient tool in disease detection, so there is an abundance of literature to draw upon (Khagi et al., 2019).
  
-We discovered it is easy to create a model that is too complex or takes too large of an input and, therefore, is extremely expensive in computation. With only eight layers in our simple CNN, we still had over 121,000 trainable parameters. To mitigate this issue, we implemented principal component analysis (PCA) and image resizing on our input data.
+We discovered it is easy to create a model that is too complex or takes too large of an input and, therefore, is extremely expensive in computation. With only eight layers in our first simple CNN, we still had over 121,000 trainable parameters. To mitigate this issue, we implemented principal component analysis (PCA) and resized the images in our input data as discussed above. We also attempted a number of different CNN models and fine-tuned their hyperparameters in an effort to improve our training and validation accuracies. 
 
 
 
