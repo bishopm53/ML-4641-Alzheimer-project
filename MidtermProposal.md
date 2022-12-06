@@ -50,7 +50,7 @@ Our next iteration was using the M3SC with the resized images, down from 256x256
 After that, we wanted to try using a totally different architecture, namely ResNet50, to see how it compared to our M3SC architecture. Unfortunately, this architecture wasn’t as powerful as we were hoping, achieving a training accuracy of 67.69% and 60.28% with a learning rate of 0.001 and 0.003, respectively, alongside a validation accuracy 63.71% and 58.55%, respectively. One of the reasons that we are thinking the ResNet50 struggled with our dataset is because our images were in grayscale and the ResNet50 was created based on color images. In order to apply our images to the architecture we had to simulate 3 color channels by stacking the images. 
 
 
-![ResnetArch](assets/img/ResnetArch.png)
+![conv](assets/img/conv.png)
 
 The last architecture was the M3SC_2 which was a modification on the M3SC architecture with Layer 4 and Layer 5 removed. Simplifying the model improved the accuracy of the run with the resize 32x32x1 images to a training accuracy of 92.32% and validation accuracy of 81.27%. We also tried to reduce the complexity of M3SC_2 by changing reducing the number of parameters from 64 to 32 in layer 3, but it lead to worse results that the previous modification, with training accuracy 92.22% and validation accuracy 78.91%. 
 
