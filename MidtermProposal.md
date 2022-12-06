@@ -20,9 +20,13 @@ Our project aims to potentially identify regional, morphological abnormalities i
 
 ![test-image](assets/img/test-image.jpg)
 
-### Data Collection
+### Data Collection/Preprocessing
 
-The categorized dataset of over 40,000 augmented MRIs consists of equally sized, 3-channel image files that are generally uniform. We did not modify the dataset too much, aside from conversion to grayscale, due to the general uniformity. We believe the versatility of a model trained on this dataset would contribute to the usability of our project in a real-world situation. Some similar works we found used methods such as skull boundary removal to improve accuracy. Modifications like this are under consideration as we work to improve the accuracy of our model.
+The categorized dataset of over 40,000 augmented MRIs consists of equally sized, 3-channel image files that are generally uniform. The first modification we made was the conversion of the images from color to grayscale. We noticed different MRI images had varying hues appearing as slightly blue, green, or pink. However, these colors introduced randomness that was not indicative of the image classifications. Turning all of our images into grayscale created more consistency among them, and it allowed us to only work with a 1-channel 256 x 256 matrix for each image, as opposed to a 256 x 256 x 3 input. Due to this general uniformity, we believe the versatility of a model trained on this dataset would contribute to the usability of our project in a real-world situation. 
+ 
+After seeing the overfitting problem as well as the complexity of our model by passing the images into the CNN without doing any dimensionality reduction, we applied PCA to a portion of our data and reran the model. This was able to decrease the complexity and running time of the model significantly. To do this we flattened the array of each image from 256 x 256 to 1 x 65,536. We passed the flattened images into the PCA model and reduced the number of dimensions to 1024. We reformatted the data into 32 x 32 arrays and trained a new CNN model, which accounted for the new dimensions.
+ 
+Another way that we attempted to preprocess the data was by resizing the images. We wanted to do this to try and improve accuracy and help the model train faster. We used PIL module to resize the images in a way that did not crop the images but used fewer pixels to cover the images. When comparing trial runs of the CNN models we created using the images after PCA vs using the images after resizing them we found that both dramatically reduced the training time, but the runs with the resized images always yielded higher accuracy. Since the model produced higher accuracy with the resized images, we decided to use the resized images in our final model.
 
 ### Methods
 
@@ -32,16 +36,24 @@ We discovered it is easy to create a model that is too complex or takes too larg
 
 
 
-### Potential Results and Discussion
+### Results and Discussion
 
-During our initial dive into creating a convolution neural network for this project, we were left with a choice of how we wanted to implement it. We researched the easiest and most user-friendly way for us to create our own model and found two main options: tensorflow and pytorch. Our team eventually settled on using tensorflow despite some group members having experience with pytorch because of the plethora of documentation on image CNNs in tensorflow.
- 
-Once this decision was made, we looked towards the data set to see what we needed to do to preprocess the data for our model. We noticed different MRI images had different hues with some slightly blue, some slightly green, and some slightly pink. So, our first step was to turn all of our images into grayscale to make the images more consistent and only have to work with a 1-channel 256 x 256 matrix for each image, as opposed to a 256 x 256 x 3 input. Once we did this, we ran our model, getting an initial accuracy of around 89.71% through 10 epochs of 450 steps. While this was quite good, we noticed that during validation, our accuracy was only 74.85%, meaning there was a significant amount of overfitting happening. From epochs 10 to 15, training accuracy increased to 93.8%, while validation decreased to 74.28%. This took a total of 2.52 hours.
-	
-After seeing the overfitting problem, as well as the complexity of our model by passing the images into the CNN without doing any dimensionality reduction, we applied PCA to a portion of our data and reran the model. This decreased the complexity and running time of the model significantly. To do this we had to flatten the array of each image from 256 x 256 to 1 x 65,536. We passed the flattened images into the PCA model and reduced the number of dimensions to 1024. We reformatted the data into 32 x 32 arrays and trained a new CNN model accounting for the new dimensions. After 10 epochs of 450 steps each, we had 79.41% training accuracy and 77.28% validation accuracy. Through 30 epochs, these values increased to 90.47% and 82.34%, respectively. The increase in accuracy was not the only advantage of PCA; running the dimensionality reduction took 7.9 minutes while training 30 epochs took 7.11 minutes.
- 
-We hope to run PCA on the entire dataset once we find a solution to memory issues we encountered with our current implementation. The benefits of PCA are clear from the decrease in training time from 2.52 hours to 15 minutes. Not only are we finding new ways to improve the iterability of the model, we have created a decently accurate model to determine the presence of Alzheimer’s disease in MRIs of the human brain.
+We built our initial model using the TensorFlow model because of the plethora of documentation on image CNNs in tensorflow. The architecture for the initial model that we created named the M3SC is detailed in Figure 1 below. We created a model that takes in the image size and one color channel and uses 3 convolution layers and 2 max pooling layers to classify the images into one of the four labels: non-demented, mild demented, moderate-demented, and very demented.
 
+For our initial model(M3SC 256x256x1), we used the M3SC architecture that we created similar to the one in Figure except the input was the full image size of 256x256x1 instead of the resized 32x32x1 images. We ran this model with the full set of grayscale images, we got an initial accuracy of around 89.71% through 10 epochs of 450 steps in a total of 2.52 hours. While this was quite good, we noticed that during validation, our accuracy was only 74.85%, meaning that there was a significant amount of overfitting happening. In the next models, we sought to address the overfitting issue and lower the amount of 
+
+Our next iteration was using the M3SC with the resized images, down from 256x256x1 to 32x32x1. This led to much faster running, only taking around ___ minutes to complete which let us run 30 epochs instead of just 10 epochs like we did using original runs of M3SC. It also improved our accuracy to 90.26% with a validation accuracy of 79.94% also reducing the overfitting. 
+
+After that, we wanted to try using a totally different architecture, namely ResNet50, to see how it compared to our M3SC architecture. Unfortunately, this architecture wasn’t as powerful as we were hoping, achieving a training accuracy of 67.69% and 60.28% with a learning rate of 0.001 and 0.003, respectively, alongside a validation accuracy 63.71% and 58.55%, respectively. One of the reasons that we are thinking the ResNet50 struggled with our dataset is because our images were in grayscale and the ResNet50 was created based on color images. In order to apply our images to the architecture we had to simulate 3 color channels by stacking the images. 
+
+The last architecture was the M3SC_2 which was a modification on the M3SC architecture with Layer 4 and Layer 5 removed. Simplifying the model improved the accuracy of the run with the resize 32x32x1 images to a training accuracy of 92.32% and validation accuracy of 81.27%. We also tried to reduce the complexity of M3SC_2 by changing reducing the number of parameters from 64 to 32 in layer 3, but it lead to worse results that the previous modification, with training accuracy 92.22% and validation accuracy 78.91%. 
+
+From here, we worked on fine-tuning the hyperparameters, namely, the size we resize the images into. We looked at 24x24x1, 48x48x1, and 64x64x1. These sizes led to training accuracy of 90.32%, 96.82%, and 97.62% respectively, and validation accuracy of 78.61%, 82.20%, and 81.84% respectively.
+
+
+The model with the highest training and validation accuracy was the M3SC_2 64x64x1 which had a training accuracy of 97.62% and a validation accuracy of 81.8%. However, this model was overfitting more than M3SC_2 32x32x1 without much improvement in accuracy, so this model may be better to work with. With this model the accuracy was leveling off around 30 Epochs and the best way to work to improve the slight overfitting model from here would be to add more data to the model, which is what we would suggest for the future. 
+
+Overall, we were satisfied with the results of our model, as it accurately categorized the images into the four classes about 80% of the time. This model distinguishes the images between the classes more accurately than humans. With more data, this model could be helpful in diagnosing patients with earlier stages of Alzheimer’s Disease in the process to help them to start treatment earlier.
 
 
 ### Gantt Chart and Contribution Table
