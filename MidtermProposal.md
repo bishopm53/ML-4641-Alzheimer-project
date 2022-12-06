@@ -44,6 +44,7 @@ For our initial model(M3SC 256x256x1), we used the M3SC architecture that we cre
 
 ![M3SC](assets/img/M3SC.png)
 
+*Figure 1*
 
 Our next iteration was using the M3SC with the resized images, down from 256x256x1 to 32x32x1. This led to much faster running, only taking around ___ minutes to complete which let us run 30 epochs instead of just 10 epochs like we did using original runs of M3SC. It also improved our accuracy to 90.26% with a validation accuracy of 79.94% also reducing the overfitting. 
 
@@ -51,6 +52,8 @@ After that, we wanted to try using a totally different architecture, namely ResN
 
 
 ![conv](assets/img/conv.jpg)
+
+*Figure 2*
 
 The last architecture was the M3SC_2 which was a modification on the M3SC architecture with Layer 4 and Layer 5 removed. Simplifying the model improved the accuracy of the run with the resize 32x32x1 images to a training accuracy of 92.32% and validation accuracy of 81.27%. We also tried to reduce the complexity of M3SC_2 by changing reducing the number of parameters from 64 to 32 in layer 3, but it lead to worse results that the previous modification, with training accuracy 92.22% and validation accuracy 78.91%. 
 
@@ -61,9 +64,13 @@ The model with the highest training and validation accuracy was the M3SC_2 64x64
 
 ![E](assets/img/E.jpeg)
 
+*Figure 3*
+
 Overall, we were satisfied with the results of our model, as it accurately categorized the images into the four classes about 80% of the time. This model distinguishes the images between the classes more accurately than humans. With more data, this model could be helpful in diagnosing patients with earlier stages of Alzheimer’s Disease in the process to help them to start treatment earlier.
 
 ![table](assets/img/table.PNG)
+
+*Table 1*
 
 ### Gantt Chart and Contribution Table
 
