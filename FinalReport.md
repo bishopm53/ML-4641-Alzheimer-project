@@ -55,6 +55,7 @@ After that, we wanted to try using a totally different architecture, namely ResN
 *Figure 2. Resnet50 Architecture*
 
 ![conv](assets/img/conv.jpg)
+(Karim, 2019)
 
 The last architecture was the M3SC_2 which was a modification on the M3SC architecture with Layer 4 and Layer 5 removed. Simplifying the model improved the accuracy of the run with the resize 32x32x1 images to a training accuracy of 92.32% and validation accuracy of 81.27%. We also tried to reduce the complexity of M3SC_2 by changing reducing the number of parameters from 64 to 32 in layer 3, but it lead to worse results that the previous modification, with training accuracy 92.22% and validation accuracy 78.91%. 
 
@@ -81,6 +82,7 @@ Here is a link to our [Contribution Table](https://gtvault-my.sharepoint.com/:x:
 ### References
 
 * Chandra, A., Dervenoulas, G., & Politis, M. (2018). Magnetic Resonance Imaging in alzheimer’s disease and mild cognitive impairment. Journal of Neurology, 266(6), 1293–1302. https://doi.org/10.1007/s00415-018-9016-3
+* Karim, Raimi (2019). Illustrated: 10 CNN Architectures. Towards Data Science. Retrieved December 5, 2022, from https://towardsdatascience.com/illustrated-10-cnn-architectures-95d78ace614d
 * Khagi, B., Kwon, G. R., & Lama, R. (2019). Comparative analysis of alzheimer's disease classification by CDR level using CNN, Feature Selection, and machine‐learning techniques. International Journal of Imaging Systems and Technology, 29(3), 297–310. https://doi.org/10.1002/ima.22316
 * Mayo Foundation for Medical Education and Research. (2022, February 19). Alzheimer's disease. Mayo Clinic. Retrieved October 6, 2022, from https://www.mayoclinic.org/diseases-conditions/alzheimers-disease/symptoms-causes/syc-20350447?utm_source=Google&utm_medium=abstract&utm_content=Alzheimers-disease&utm_campaign=Knowledge-panel
 * Mofrad, S. A., Lundervold, A. J., Vik, A., & Lundervold, A. S. (2021). Cognitive and MRI trajectories for prediction of alzheimer’s disease. Scientific Reports, 11(1). https://doi.org/10.1038/s41598-020-78095-
