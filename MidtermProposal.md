@@ -41,11 +41,11 @@ We discovered it is easy to create a model that is too complex or takes too larg
 We built our initial model using the TensorFlow model because of the plethora of documentation on image CNNs in tensorflow. The architecture for the initial model that we created named the M3SC is detailed in Figure 1 below. We created a model that takes in the image size and one color channel and uses 3 convolution layers and 2 max pooling layers to classify the images into one of the four labels: non-demented, mild demented, moderate-demented, and very demented.
 
 For our initial model(M3SC 256x256x1), we used the M3SC architecture that we created similar to the one in Figure except the input was the full image size of 256x256x1 instead of the resized 32x32x1 images. We ran this model with the full set of grayscale images, we got an initial accuracy of around 89.71% through 10 epochs of 450 steps in a total of 2.52 hours. While this was quite good, we noticed that during validation, our accuracy was only 74.85%, meaning that there was a significant amount of overfitting happening. In the next models, we sought to address the overfitting issue and lower the amount of 
-
+<p align = "center">
 ![M3SC](assets/img/M3SC.png)
 
 *Figure 1*
-
+</p>
 Our next iteration was using the M3SC with the resized images, down from 256x256x1 to 32x32x1. This led to much faster running, only taking around ___ minutes to complete which let us run 30 epochs instead of just 10 epochs like we did using original runs of M3SC. It also improved our accuracy to 90.26% with a validation accuracy of 79.94% also reducing the overfitting. 
 
 After that, we wanted to try using a totally different architecture, namely ResNet50, to see how it compared to our M3SC architecture. Unfortunately, this architecture wasn’t as powerful as we were hoping, achieving a training accuracy of 67.69% and 60.28% with a learning rate of 0.001 and 0.003, respectively, alongside a validation accuracy 63.71% and 58.55%, respectively. One of the reasons that we are thinking the ResNet50 struggled with our dataset is because our images were in grayscale and the ResNet50 was created based on color images. In order to apply our images to the architecture we had to simulate 3 color channels by stacking the images. 
