@@ -52,7 +52,7 @@ Our next iteration was using the M3SC with the resized images, down from 256x256
 
 After that, we wanted to try using a totally different architecture, namely ResNet50, to see how it compared to our M3SC architecture. Unfortunately, this architecture wasn’t as powerful as we were hoping, achieving a training accuracy of 67.69% and 60.28% with a learning rate of 0.001 and 0.003, respectively, alongside a validation accuracy 63.71% and 58.55%, respectively. One of the reasons that we are thinking the ResNet50 struggled with our dataset is because our images were in grayscale and the ResNet50 was created based on color images. In order to apply our images to the architecture we had to simulate 3 color channels by stacking the images. 
 
-*Figure 2. Resnet50 Architecture*
+*Figure 2. ResNet50 Architecture*
 
 ![conv](assets/img/conv.jpg)
 (Karim, 2019)
