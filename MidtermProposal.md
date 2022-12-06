@@ -41,36 +41,34 @@ We discovered it is easy to create a model that is too complex or takes too larg
 We built our initial model using the TensorFlow model because of the plethora of documentation on image CNNs in tensorflow. The architecture for the initial model that we created named the M3SC is detailed in Figure 1 below. We created a model that takes in the image size and one color channel and uses 3 convolution layers and 2 max pooling layers to classify the images into one of the four labels: non-demented, mild demented, moderate-demented, and very demented.
 
 For our initial model(M3SC 256x256x1), we used the M3SC architecture that we created similar to the one in Figure except the input was the full image size of 256x256x1 instead of the resized 32x32x1 images. We ran this model with the full set of grayscale images, we got an initial accuracy of around 89.71% through 10 epochs of 450 steps in a total of 2.52 hours. While this was quite good, we noticed that during validation, our accuracy was only 74.85%, meaning that there was a significant amount of overfitting happening. In the next models, we sought to address the overfitting issue and lower the amount of 
-<p align = "center">
+
+*Figure 1. M3SC Architecture*
+
 ![M3SC](assets/img/M3SC.png)
 
-*Figure 1*
-</p>
 Our next iteration was using the M3SC with the resized images, down from 256x256x1 to 32x32x1. This led to much faster running, only taking around ___ minutes to complete which let us run 30 epochs instead of just 10 epochs like we did using original runs of M3SC. It also improved our accuracy to 90.26% with a validation accuracy of 79.94% also reducing the overfitting. 
 
 After that, we wanted to try using a totally different architecture, namely ResNet50, to see how it compared to our M3SC architecture. Unfortunately, this architecture wasn’t as powerful as we were hoping, achieving a training accuracy of 67.69% and 60.28% with a learning rate of 0.001 and 0.003, respectively, alongside a validation accuracy 63.71% and 58.55%, respectively. One of the reasons that we are thinking the ResNet50 struggled with our dataset is because our images were in grayscale and the ResNet50 was created based on color images. In order to apply our images to the architecture we had to simulate 3 color channels by stacking the images. 
 
+*Figure 2. Resnet50 Architecture*
 
 ![conv](assets/img/conv.jpg)
-
-*Figure 2*
 
 The last architecture was the M3SC_2 which was a modification on the M3SC architecture with Layer 4 and Layer 5 removed. Simplifying the model improved the accuracy of the run with the resize 32x32x1 images to a training accuracy of 92.32% and validation accuracy of 81.27%. We also tried to reduce the complexity of M3SC_2 by changing reducing the number of parameters from 64 to 32 in layer 3, but it lead to worse results that the previous modification, with training accuracy 92.22% and validation accuracy 78.91%. 
 
 From here, we worked on fine-tuning the hyperparameters, namely, the size we resize the images into. We looked at 24x24x1, 48x48x1, and 64x64x1. These sizes led to training accuracy of 90.32%, 96.82%, and 97.62% respectively, and validation accuracy of 78.61%, 82.20%, and 81.84% respectively.
 
-
 The model with the highest training and validation accuracy was the M3SC_2 64x64x1 which had a training accuracy of 97.62% and a validation accuracy of 81.8%. However, this model was overfitting more than M3SC_2 32x32x1 without much improvement in accuracy, so this model may be better to work with. With this model the accuracy was leveling off around 30 Epochs and the best way to work to improve the slight overfitting model from here would be to add more data to the model, which is what we would suggest for the future.
+
+*Figure 3. Training Accuracy Over Epochs for the M3SC_2 32x32x1*
 
 ![E](assets/img/E.jpeg)
 
-*Figure 3*
-
 Overall, we were satisfied with the results of our model, as it accurately categorized the images into the four classes about 80% of the time. This model distinguishes the images between the classes more accurately than humans. With more data, this model could be helpful in diagnosing patients with earlier stages of Alzheimer’s Disease in the process to help them to start treatment earlier.
 
-![table](assets/img/table.PNG)
+*Table 1. Results*
 
-*Table 1*
+![table](assets/img/table.PNG)
 
 ### Gantt Chart and Contribution Table
 
