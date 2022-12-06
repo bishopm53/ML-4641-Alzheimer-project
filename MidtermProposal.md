@@ -59,7 +59,7 @@ From here, we worked on fine-tuning the hyperparameters, namely, the size we res
 
 The model with the highest training and validation accuracy was the M3SC_2 64x64x1 which had a training accuracy of 97.62% and a validation accuracy of 81.8%. However, this model was overfitting more than M3SC_2 32x32x1 without much improvement in accuracy, so this model may be better to work with. With this model the accuracy was leveling off around 30 Epochs and the best way to work to improve the slight overfitting model from here would be to add more data to the model, which is what we would suggest for the future.
 
-![Epoch](assets/img/Epoch.jpeg)
+![E](assets/img/E.jpeg)
 
 Overall, we were satisfied with the results of our model, as it accurately categorized the images into the four classes about 80% of the time. This model distinguishes the images between the classes more accurately than humans. With more data, this model could be helpful in diagnosing patients with earlier stages of Alzheimer’s Disease in the process to help them to start treatment earlier.
 
